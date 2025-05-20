@@ -24,6 +24,7 @@ function HomeIndo() {
       alert("Please agree to the Terms & Conditions to proceed.");
     }
   };
+  
 
   useEffect(() => {
     const hasAcceptedTerms = sessionStorage.getItem("termsAccepted");
