@@ -49,8 +49,6 @@ export default function InternationalOffline() {
         break;
       case "World Invention Competition and Exhibition - Offline Competition + Full Package":
         break;
-      case "World Invention Competition and Exhibition - Offline Competition + Excursion":
-        break;
       default:
         setCategoryPrice("");
         break;
@@ -67,7 +65,7 @@ export default function InternationalOffline() {
   }, [router]);
 
   const scriptURL =
-    "https://script.google.com/macros/s/AKfycbz2etM6KLKvfcMVbyTb9tu7esMkvYkPebzF7CYxxFRt423HwZQTydffHhh00Fs0pmoL/exec";
+    "https://script.google.com/macros/s/AKfycbyZ8h-bkDuKeURi3_Q0HWTdSq43EQTquvOZ3wKCS-Eq7lI1QlPtafOTHje9_Zzhn5qQ/exec";
 
   useEffect(() => {
     const form = document.forms["regist-form"];
@@ -251,9 +249,6 @@ export default function InternationalOffline() {
                     </option>
                     <option value="World Invention Competition and Exhibition - Offline Competition + Full Package">
                       Offline Competition + Full Package
-                    </option>
-                    <option value="World Invention Competition and Exhibition - Offline Competition + Excursion">
-                      Offline Competition + Excursion
                     </option>
                   </select>
                 </div>
@@ -457,12 +452,8 @@ export default function InternationalOffline() {
                     required
                   >
                     <option value="">--Choose Grade--</option>
-                    <option value="Elementary">
-                      Elementary
-                    </option>
-                    <option value="Secondary">
-                      Secondary
-                    </option>
+                    <option value="Elementary">Elementary</option>
+                    <option value="Secondary">Secondary</option>
                     <option value="University">University</option>
                   </select>
                 </div>
@@ -502,7 +493,10 @@ export default function InternationalOffline() {
                   ></textarea>
                 </div>
                 <div className="input-box">
-                  <label for="WHATSAPP_NUMBER_SUPERVISOR" className="form-label">
+                  <label
+                    for="WHATSAPP_NUMBER_SUPERVISOR"
+                    className="form-label"
+                  >
                     Teacher/Supervisor WhatsApp Number
                     <p>
                       Please write with phone code, example : (phone code) (your
@@ -574,19 +568,15 @@ export default function InternationalOffline() {
                     required
                   >
                     <option value="">--Choose Categories--</option>
-                    <option value="Applied Life Sciences">
-                      Applied Life Sciences
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Social Science">Social Science</option>
+                    <option value="Environmental">Environmental</option>
+                    <option value="Life Science">Life Science</option>
+                    <option value="Physic">Physic</option>
+                    <option value="Education">Education</option>
+                    <option value="Energy and Engineering">
+                      Energy and Engineering
                     </option>
-                    <option value="Innovative Social Science">
-                      Innovative Social Science
-                    </option>
-                    <option value="Applied Physics and Engineering">
-                      Applied Physics and Engineering
-                    </option>
-                    <option value="Environmental Science">
-                      Environmental Science
-                    </option>
-                    <option value="IT and Robotics">IT and Robotics</option>
                   </select>
                 </div>
                 <div className="input-box">
@@ -608,7 +598,10 @@ export default function InternationalOffline() {
                   </select>
                 </div>
                 <div className="input-box">
-                  <label for="JUDUL_PERNAH_BERPATISIPASI" className="form-label">
+                  <label
+                    for="JUDUL_PERNAH_BERPATISIPASI"
+                    className="form-label"
+                  >
                     If the project title have ever participated in other
                     invention and innovation competition, please write down the
                     name of competition
@@ -671,12 +664,12 @@ export default function InternationalOffline() {
                       --Select the Source of Information--
                     </option>
                     <option value="WYIIA Website">WYIIA Website</option>
+                    <option value="IYSA Website">IYSA Website</option>
                     <option value="IYSA Instagram">IYSA Instagram</option>
                     <option value="WYIIA Instagram">WYIIA Instagram</option>
                     <option value="Supervisor/School">Supervisor/School</option>
                     <option value="IYSA Facebook">IYSA Facebook</option>
                     <option value="IYSA Linkedin">IYSA Linkedin</option>
-                    <option value="IYSA Website">IYSA Website</option>
                     <option value="IYSA Email">IYSA Email</option>
                     <option value="WYIIA Email">WYIIA Email</option>
                     <option value="Previous Event">Previous Event</option>

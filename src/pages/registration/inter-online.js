@@ -69,7 +69,7 @@ export default function InternationalOnline() {
   }, [router]);
 
   const scriptURL =
-    "https://script.google.com/macros/s/AKfycbzQQQ4KUSlmGPBxKoE-e6rtwtjICKp9VYcGcQpwEFz8sWKr1JgPqJ2WMz63rnXBuQLd/exec";
+    "https://script.google.com/macros/s/AKfycbwhYEVRZ8F45IJgaS1Ia0Xz8UFwlEApCHrotg4xmbABu6Q8SXiuj0CSaPOGg490C8A/exec";
 
   useEffect(() => {
     const form = document.forms["regist-form"];
@@ -498,7 +498,10 @@ export default function InternationalOnline() {
                   ></textarea>
                 </div>
                 <div className="input-box">
-                  <label for="WHATSAPP_NUMBER_SUPERVISOR" className="form-label">
+                  <label
+                    for="WHATSAPP_NUMBER_SUPERVISOR"
+                    className="form-label"
+                  >
                     Teacher/Supervisor WhatsApp Number
                     <p>
                       Please write with phone code, example : (phone code) (your
@@ -573,19 +576,15 @@ export default function InternationalOnline() {
                     required
                   >
                     <option value="">--Choose Categories--</option>
-                    <option value="Applied Life Sciences">
-                      Applied Life Sciences
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Social Science">Social Science</option>
+                    <option value="Environmental">Environmental</option>
+                    <option value="Life Science">Life Science</option>
+                    <option value="Physic">Physic</option>
+                    <option value="Education">Education</option>
+                    <option value="Energy and Engineering">
+                      Energy and Engineering
                     </option>
-                    <option value="Innovative Social Science">
-                      Innovative Social Science
-                    </option>
-                    <option value="Applied Physics and Engineering">
-                      Applied Physics and Engineering
-                    </option>
-                    <option value="Environmental Science">
-                      Environmental Science
-                    </option>
-                    <option value="IT and Robotics">IT and Robotics</option>
                   </select>
                 </div>
                 <div className="input-box ">
@@ -607,7 +606,10 @@ export default function InternationalOnline() {
                   </select>
                 </div>
                 <div className="input-box">
-                  <label for="JUDUL_PERNAH_BERPATISIPASI" className="form-label">
+                  <label
+                    for="JUDUL_PERNAH_BERPATISIPASI"
+                    className="form-label"
+                  >
                     If the project title have ever participated in other
                     invention and innovation competition, please write down the
                     name of competition
@@ -685,14 +687,14 @@ export default function InternationalOnline() {
                     <option value="">
                       --Select the Source of Information--
                     </option>
+                    <option value="WYIIA Website">WYIIA Website</option>
+                    <option value="IYSA Website">IYSA Website</option>
                     <option value="WYIIA Email">WYIIA Email</option>
                     <option value="IYSA Instagram">IYSA Instagram</option>
                     <option value="WYIIA Instagram">WYIIA Instagram</option>
                     <option value="Supervisor/School">Supervisor/School</option>
                     <option value="IYSA Facebook">IYSA Facebook</option>
                     <option value="IYSA Linkedin">IYSA Linkedin</option>
-                    <option value="IYSA Website">IYSA Website</option>
-                    <option value="WYIIA Website">WYIIA Website</option>
                     <option value="IYSA Email">IYSA Email</option>
                     <option value="Previous Event">Previous Event</option>
                     <option value="Others">Others</option>

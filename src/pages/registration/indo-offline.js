@@ -46,10 +46,6 @@ function IndonesiaOffline() {
     switch (value) {
       case "World Invention Competition and Exhibition - Offline Competition":
         break;
-      case "World Invention Competition and Exhibition - Offline Competition + Excursion":
-        break;
-      case "World Invention Competition and Exhibition - Offline Competition + FullPack":
-        break;
       default:
         break;
     }
@@ -65,7 +61,7 @@ function IndonesiaOffline() {
   }, [router]);
 
   const scriptURL =
-    "https://script.google.com/macros/s/AKfycbzO7qn6MeHUUwDn2-6HURncDBQw9ixtJQyagSes6r3lEC9mxymMsfUZkD2Z24lMM9t6/exec";
+    "https://script.google.com/macros/s/AKfycbxi7BlzdFHr-fxmh12bhbw80UXDzQ4ImFYEcdJQ0ji7UNFikVg-fw-oGp5l8dbmPf4J/exec";
 
   useEffect(() => {
     const form = document.forms["regist-form"];
@@ -109,7 +105,7 @@ function IndonesiaOffline() {
       });
 
       if (response.ok) {
-        setStatusMessage("Data berhasil dikirim!");
+        setStatusMessage("Data sent successfully!");
 
         // Ambil data sebelum reset
         const formData = {
@@ -122,7 +118,7 @@ function IndonesiaOffline() {
         form.reset();
         setTimeout(() => {
           router.push(
-            `/registration/thankyouindo?namaLengkap=${encodeURIComponent(
+            `/registration/thankyouinter?namaLengkap=${encodeURIComponent(
               selectedMaxNamaLengkap
             )}
             &projectTitle=${encodeURIComponent(selectedMaxProject)}
@@ -238,12 +234,6 @@ function IndonesiaOffline() {
                     <option value="">--Choose Category Competition--</option>
                     <option value="World Invention Competition and Exhibition - Offline Competition">
                       Offline Competition
-                    </option>
-                    <option value="World Invention Competition and Exhibition - Offline Competition + Excursion">
-                      Offline Competition + Excursion
-                    </option>
-                    <option value="World Invention Competition and Exhibition - Offline Competition + Fullpack">
-                      Offline Competition + Fullpack
                     </option>
                   </select>
                 </div>
@@ -541,19 +531,27 @@ function IndonesiaOffline() {
                     required
                   >
                     <option value="">--Choose Categories--</option>
-                    <option value="Applied Life Sciences">
-                      Applied Life Sciences
+                    <option value="Mathematics">
+                      Mathematics
                     </option>
-                    <option value="Innovative Social Science">
-                      Innovative Social Science
+                    <option value="Social Science">
+                      Social Science
                     </option>
-                    <option value="Applied Physics and Engineering">
-                      Applied Physics and Engineering
+                    <option value="Environmental">
+                      Environmental
                     </option>
-                    <option value="Environmental Science">
-                      Environmental Science
+                    <option value="Life Science">
+                      Life Science
                     </option>
-                    <option value="IT and Robotics">IT and Robotics</option>
+                    <option value="Physic">
+                      Physic
+                    </option>
+                    <option value="Education">
+                      Education
+                    </option>
+                    <option value="Energy and Engineering">
+                      Energy and Engineering
+                    </option>
                   </select>
                 </div>
 

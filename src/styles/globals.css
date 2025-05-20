@@ -77,7 +77,7 @@
 .btn:hover {
   box-shadow: 8px 8px var(--warna-primary);
   background-color: var(--warna-sekunder);
-  color: var(--warna-tulisan) !important;
+  color: var(--warna-tulisan2) !important;
   transition: 0.3s;
   margin-right: 5px;
 }
@@ -90,7 +90,7 @@
 .btn-action:hover {
   box-shadow: 8px 8px var(--warna-primary);
   background-color: var(--warna-sekunder);
-  color: var(--warna-tulisan) !important;
+  color: var(--warna-tulisan2) !important;
   transition: 0.3s;
   margin-right: 5px;
 }
@@ -287,12 +287,13 @@
 .registration-section form .button input:hover {
   background-color: var(--warna-sekunder);
   transition: 0.3s;
+  color: var(--warna-tulisan2);
   box-shadow: 12px 12px #130101;
 }
 .registration-section form .buttonindo input:hover {
   box-shadow: 12px 12px #da0808;
   background-color: var(--warna-sekunder) !important;
-  color: var(--warna-tulisan);
+  color: var(--warna-tulisan2);
   border-color: #e02807;
   transition: 0.3s;
 }
@@ -503,6 +504,7 @@ input[type="checkbox"] {
 /* Hover efek */
 .modal-buttons-submit button:hover {
   opacity: 0.8;
+  color: var(--warna-tulisan);
 }
 
 /* Animasi fade-in */

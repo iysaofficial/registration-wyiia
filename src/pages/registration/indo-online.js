@@ -62,7 +62,7 @@ function IndonesiaOnline() {
   }, [router]);
 
   const scriptURL =
-    "https://script.google.com/macros/s/AKfycbyvMPRRVvg5EpYxBSHos6D7HCjnmhc8gkitrMTyoEbsKp1SFF4h6IdaGB6RhF8hUidX/exec";
+    "https://script.google.com/macros/s/AKfycbyKOJy7fYOmJKomKIdVaEtxZ61qiIoxSbGOvKLF0Jvl7RGrEWOEWmUccF66C5ylw_fO/exec";
 
   useEffect(() => {
     const form = document.forms["regist-form"];
@@ -411,12 +411,8 @@ function IndonesiaOnline() {
                     required
                   >
                     <option value="">--Choose Grade--</option>
-                    <option value="Elementary">
-                      Elementary
-                    </option>
-                    <option value="Secondary">
-                      Secondary
-                    </option>
+                    <option value="Elementary">Elementary</option>
+                    <option value="Secondary">Secondary</option>
                     <option value="University">University</option>
                   </select>
                 </div>
@@ -539,19 +535,15 @@ function IndonesiaOnline() {
                     required
                   >
                     <option value="">--Choose Categories--</option>
-                    <option value="Applied Life Sciences">
-                      Applied Life Sciences
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Social Science">Social Science</option>
+                    <option value="Environmental">Environmental</option>
+                    <option value="Life Science">Life Science</option>
+                    <option value="Physic">Physic</option>
+                    <option value="Education">Education</option>
+                    <option value="Energy and Engineering">
+                      Energy and Engineering
                     </option>
-                    <option value="Innovative Social Science">
-                      Innovative Social Science
-                    </option>
-                    <option value="Applied Physics and Engineering">
-                      Applied Physics and Engineering
-                    </option>
-                    <option value="Environmental Science">
-                      Environmental Science
-                    </option>
-                    <option value="IT and Robotics">IT and Robotics</option>
                   </select>
                 </div>
 
@@ -658,9 +650,7 @@ function IndonesiaOnline() {
                     <option value="WYIIA Website">WYIIA Website</option>
                     <option value="IYSA Instagram">IYSA Instagram</option>
                     <option value="WYIIA Instagram">WYIIA Instagram</option>
-                    <option value="Supervisor/School">
-                      Supervisor/School
-                    </option>
+                    <option value="Supervisor/School">Supervisor/School</option>
                     <option value="IYSA Facebook">IYSA Facebook</option>
                     <option value="IYSA Linkedin">IYSA Linkedin</option>
                     <option value="IYSA Website">IYSA Website</option>
