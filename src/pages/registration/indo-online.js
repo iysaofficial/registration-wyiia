@@ -121,7 +121,7 @@ function IndonesiaOnline() {
         form.reset();
         setTimeout(() => {
           router.push(
-            `/registration/thankyouindo?namaLengkap=${encodeURIComponent(
+            `/registration/thankyouinter?namaLengkap=${encodeURIComponent(
               selectedMaxNamaLengkap
             )}
             &projectTitle=${encodeURIComponent(selectedMaxProject)}
