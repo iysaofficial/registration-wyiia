@@ -531,6 +531,9 @@ function IndonesiaOffline() {
                     required
                   >
                     <option value="">--Choose Categories--</option>
+                    <option value="Technology">
+                      Technology
+                    </option>
                     <option value="Mathematics">
                       Mathematics
                     </option>
@@ -538,7 +541,7 @@ function IndonesiaOffline() {
                       Social Science
                     </option>
                     <option value="Environmental">
-                      Environmental
+                      Environment
                     </option>
                     <option value="Life Science">
                       Life Science

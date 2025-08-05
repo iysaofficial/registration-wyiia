@@ -576,9 +576,10 @@ export default function InternationalOnline() {
                     required
                   >
                     <option value="">--Choose Categories--</option>
+                    <option value="Technology">Technology</option>
                     <option value="Mathematics">Mathematics</option>
                     <option value="Social Science">Social Science</option>
-                    <option value="Environmental">Environmental</option>
+                    <option value="Environmental">Environment</option>
                     <option value="Life Science">Life Science</option>
                     <option value="Physic">Physic</option>
                     <option value="Education">Education</option>
