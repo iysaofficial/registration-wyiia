@@ -61,7 +61,7 @@ function IndonesiaOffline() {
   }, [router]);
 
   const scriptURL =
-    "https://script.google.com/macros/s/AKfycbxi7BlzdFHr-fxmh12bhbw80UXDzQ4ImFYEcdJQ0ji7UNFikVg-fw-oGp5l8dbmPf4J/exec";
+    "";
 
   useEffect(() => {
     const form = document.forms["regist-form"];
@@ -674,7 +674,7 @@ function IndonesiaOffline() {
               {/* GENERAL INFORMATION END */}
 
               <div className="button">
-                <input type="submit" value="SUBMIT FORM" />
+                <input type="submit" value="CLOSE" />
               </div>
             </form>
             {/* Loader dan Status Message */}
