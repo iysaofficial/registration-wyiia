@@ -288,7 +288,7 @@ function IndonesiaOffline() {
                       code)(phone number) +62 81770914xxxx
                     </p>
                     <p>
-                      Notes : Please fill in the team leader's number correctly,
+                      Notes : Please fill in the team leader&apos;s number correctly,
                       so that it can be entered into the group.
                     </p>
                   </label>
@@ -308,7 +308,7 @@ function IndonesiaOffline() {
                   <label>
                     <p>
                       Notes : Please fill in the email correctly, the LOA will
-                      be sent via the team leader's email address provided.
+                      be sent via the team leader&apos;s email address provided.
                     </p>
                   </label>
                   <input
