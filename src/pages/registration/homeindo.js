@@ -43,7 +43,7 @@ function HomeIndo() {
                 REGISTRATION FORM FOR INDONESIA PARTICIPANTS
               </h1>
               <h3 className="mx-auto mt-5 mb-2 text-sm md:text-lg lg:text-2xl">
-                Choose Categories Competition for Registration WYIIA 2025
+                Choose Categories Competition for Registration WYIIA 2026
               </h3>
             </div>
           </div>
@@ -52,23 +52,23 @@ function HomeIndo() {
               className="btn btn-action text-center me-lg-5 "
               onClick={() =>
                 handleOpenModal(
-                  "",
+                  "/registration/indo-online",
                   indonesiaOnlineTerms
                 )
               }
             >
-              Close Regist<i className="fa-solid fa-earth-americas"></i>
+              Online Competition <i className="fa-solid fa-earth-americas"></i>
             </a>
             <a
               className="btn btn-action text-center me-lg-5 "
               onClick={() =>
                 handleOpenModal(
-                  "",
+                  "/registration/indo-offline",
                   indonesiaOfflineTerms
                 )
               }
             >
-              Close Regist<i className="fa-solid fa-earth-americas"></i>
+              Offline Competition <i className="fa-solid fa-earth-americas"></i>
             </a>
           </div>
         </div>

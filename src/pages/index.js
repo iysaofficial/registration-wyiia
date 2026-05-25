@@ -18,22 +18,22 @@ export default function Home() {
                 REGISTRATION FORM
               </h1>
               <h3 className="mx-auto mt-5 mb-2 text-sm md:text-lg lg:text-2xl">
-                Choose Categories Participant for Registration WYIIA 2025
+                Choose Categories Participant for Registration WYIIA 2026
               </h3>
             </div>
           </div>
           <div className="link-web mx-auto text-center">
-            <Link href="" legacyBehavior>
+            <Link href="/registration/homeindo" legacyBehavior>
               <a
                 className="btn btn-action text-center me-lg-5 m-2"
               >
-                Close Regist{" "}
+                Indonesian Citizen{" "}
                 <i className="fa-solid fa-earth-americas"></i>
               </a>
             </Link>
-            <Link href="" legacyBehavior>
+            <Link href="/registration/homeinter" legacyBehavior>
               <a className="btn btn-action text-center me-lg-5 m-2">
-                Close Regist{" "}
+                International Citizen{" "}
                 <i className="fa-solid fa-earth-americas"></i>
               </a>
             </Link>

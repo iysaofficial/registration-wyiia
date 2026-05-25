@@ -46,7 +46,7 @@ function IndonesiaOnline() {
     // Logika untuk menentukan harga berdasarkan kategori yang dipilih
     switch (value) {
       case "World Youth Invention and Innovation Award - Online Competition":
-        setCategoryPrice("RP 950.000");
+        setCategoryPrice("RP 1.150.000");
         break;
       default:
         break;
@@ -62,7 +62,7 @@ function IndonesiaOnline() {
   }, [router]);
 
   const scriptURL =
-    "";
+    "https://script.google.com/macros/s/AKfycbzC6-yV3KxeVD9khRQ18rRqUT-FfbLCgwa1J8WKKzuF7ndk9NFClGOVggXRvZPSgRWehg/exec";
 
   useEffect(() => {
     const form = document.forms["regist-form"];
@@ -107,26 +107,27 @@ function IndonesiaOnline() {
       });
 
       if (response.ok) {
-        setStatusMessage("Data berhasil dikirim!");
+        setStatusMessage("Data sent successfully!");
 
         // Ambil data sebelum reset
         const formData = {
           namaLengkap: selectedMaxNamaLengkap,
           projectTitle: selectedMaxProject,
           category: selectedCategory,
-          categoryPrice: categoryPrice,
           namasekolah: selectedNamaSekolah,
         };
 
         form.reset();
+
         setTimeout(() => {
           router.push(
-            `/registration/thankyouinter?namaLengkap=${encodeURIComponent(
-              selectedMaxNamaLengkap
-            )}
-            &projectTitle=${encodeURIComponent(selectedMaxProject)}
-            &category=${encodeURIComponent(selectedCategory)}
-            &namasekolah=${encodeURIComponent(selectedNamaSekolah)}`
+            `/registration/thankyouindo?namaLengkap=${encodeURIComponent(
+              formData.namaLengkap
+            )}&projectTitle=${encodeURIComponent(
+              formData.projectTitle
+            )}&category=${encodeURIComponent(
+              formData.category
+            )}&namasekolah=${encodeURIComponent(formData.namasekolah)}`
           );
         }, 1000);
       } else {
@@ -149,7 +150,7 @@ function IndonesiaOnline() {
             <br />
             <br />
             <h4>
-              HELLO WYIIA 2025 PARTICIPANTS, Please consider the following
+              HELLO WYIIA 2026 PARTICIPANTS, Please consider the following
               information before filling out the registration form :
             </h4>
             <br />
@@ -218,13 +219,13 @@ function IndonesiaOnline() {
                     name="CATEGORY_PARTICIPANT"
                     className="form-control"
                     placeholder="Choose Categories Participant"
-                    value="INDONESIA PARTICIPANTS"
+                    value="INDONESIAN PARTICIPANTS"
                     readOnly
                   />
                 </div>
                 <div className="input-box">
                   <label for="CATEGORY_COMPETITION" className="form-label">
-                    Category Competition
+                    Categories Competition
                   </label>
                   <select
                     type="text"
@@ -255,9 +256,9 @@ function IndonesiaOnline() {
                       the following format:
                     </p>
                     <p>Note: maximum 5 members + 1 team leader</p>
-                    <h6>Kamal Putra</h6>
-                    <h6>Ranu Ramadhan</h6>
-                    <h6>Irsyad Zaidan</h6>
+                    <h6>Kamal Putra Simatupang</h6>
+                    <h6>Ranu Ramadhan Siregar</h6>
+                    <h6>Irsyad Zaidan Tanjung</h6>
                   </label>
                   <textarea
                     type="text"
@@ -316,7 +317,7 @@ function IndonesiaOnline() {
                 </div>
                 <div className="input-box">
                   <label for="NISN_NIM" className="form-label">
-                    NISN / NIM Team Leader & Team Member
+                    NISN / NIM Team Leader & Team Members
                   </label>
                   <label>
                     <p>
@@ -414,6 +415,9 @@ function IndonesiaOnline() {
                     <option value="Elementary">Elementary</option>
                     <option value="Secondary">Secondary</option>
                     <option value="University">University</option>
+                    {/* <option value="Public (Teachers, Lecture, Researchers)">
+                      Public (Teachers, Lecture, Researchers)
+                    </option> */}
                   </select>
                 </div>
                 <div className="input-box">
@@ -527,7 +531,7 @@ function IndonesiaOnline() {
                 <div className="input-box">
                   <label htmlFor="CATEGORIES" className="form-label">
                     Categories
-                  </label>
+                  </label>  
                   <select
                     id="CATEGORIES"
                     name="CATEGORIES"
@@ -535,15 +539,20 @@ function IndonesiaOnline() {
                     required
                   >
                     <option value="">--Choose Categories--</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Mathematics">Mathematics</option>
+                    <option value="Social Science">Social Sciences</option>
+                    <option value="Social Science">Technology</option>
                     <option value="Social Science">Social Science</option>
-                    <option value="Environmental">Environment</option>
-                    <option value="Life Science">Life Science</option>
-                    <option value="Physic">Physic</option>
-                    <option value="Education">Education</option>
+                    <option value="Social Science">Mathematics</option>
+                    <option value="Social Science">Environment</option>
+                    <option value="Education">
+                      Education
+                    </option>
                     <option value="Energy and Engineering">
                       Energy and Engineering
+                    </option>
+                    <option value="Engineering">Pyhsic</option>
+                    <option value="Life ">
+                      Life Sciences
                     </option>
                   </select>
                 </div>
@@ -635,7 +644,7 @@ function IndonesiaOnline() {
                 </div>
                 <div className="input-box">
                   <label for="INFORMATION_RESOURCES" className="form-label">
-                    WYIIA 2025 Competition Information Resources
+                    WYIIA 2026 Competition Information Resources
                   </label>
                   <select
                     type="text"
@@ -649,12 +658,14 @@ function IndonesiaOnline() {
                       --Select the Source of Information--
                     </option>
                     <option value="WYIIA Website">WYIIA Website</option>
+                    <option value="IYSA Website">IYSA Website</option>
                     <option value="IYSA Instagram">IYSA Instagram</option>
                     <option value="WYIIA Instagram">WYIIA Instagram</option>
-                    <option value="Supervisor/School">Supervisor/School</option>
+                    <option value="Supervisor/School">
+                      Supervisor/School
+                    </option>
                     <option value="IYSA Facebook">IYSA Facebook</option>
                     <option value="IYSA Linkedin">IYSA Linkedin</option>
-                    <option value="IYSA Website">IYSA Website</option>
                     <option value="IYSA Email">IYSA Email</option>
                     <option value="WYIIA Email">WYIIA Email</option>
                     <option value="Previous Event">Previous Event</option>
@@ -679,7 +690,7 @@ function IndonesiaOnline() {
               {/* GENERAL INFORMATION END */}
 
               <div className="button">
-                <input type="submit" value="CLOSE" />
+                <input type="submit" value="SUBMIT FORM" />
               </div>
             </form>
 

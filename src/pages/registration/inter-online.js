@@ -45,13 +45,13 @@ export default function InternationalOnline() {
     // Logika untuk menentukan harga berdasarkan kategori yang dipilih
     switch (value) {
       case "World Youth Invention and Innovation Award - Online Competition":
-        setCategoryPrice("$75 USD");
+        setCategoryPrice("$85 USD");
         break;
       case "World Youth Invention and Innovation Award - Online Competition + Certificate and Medal (SOUTH EAST ASIA ONLY)":
-        setCategoryPrice("$200 USD");
+        setCategoryPrice("$225 USD");
         break;
       case "World Youth Invention and Innovation Award - Online Competition + Certificate and Medal (Exclude SOUTH EAST ASIA)":
-        setCategoryPrice("$250 USD");
+        setCategoryPrice("$275 USD");
         break;
       default:
         setCategoryPrice("");
@@ -64,12 +64,12 @@ export default function InternationalOnline() {
 
     if (!termsAccepted) {
       alert("You must agree to the Terms & Conditions first.");
-      router.push("/registration/homeinter"); // Navigasi ke halaman HomeIndo
+      router.push("/registration/homeinter"); // Navigasi ke halaman HomeInter
     }
   }, [router]);
 
   const scriptURL =
-    "";
+    "https://script.google.com/macros/s/AKfycbwgOZq9XAccnqAP67AauR4ETJnMfHxxyFDrYbsvLyGzkLYncxgU5EKOCPy8Go503xoOtA/exec";
 
   useEffect(() => {
     const form = document.forms["regist-form"];
@@ -101,7 +101,7 @@ export default function InternationalOnline() {
   }, []);
 
   const handleConfirmSubmit = async () => {
-    setShowModal(false); // Tutup modal
+    setShowModal(false); // Close the modal
     const form = document.forms["regist-form"];
 
     if (!form) return;
@@ -121,19 +121,21 @@ export default function InternationalOnline() {
           namaLengkap: selectedMaxNamaLengkap,
           projectTitle: selectedMaxProject,
           category: selectedCategory,
-          categoryPrice: categoryPrice,
           namasekolah: selectedNamaSekolah,
         };
 
         form.reset();
+
+        // Navigasi ke halaman Thank You dengan query string
         setTimeout(() => {
           router.push(
             `/registration/thankyouinter?namaLengkap=${encodeURIComponent(
-              selectedMaxNamaLengkap
-            )}
-            &projectTitle=${encodeURIComponent(selectedMaxProject)}
-            &category=${encodeURIComponent(selectedCategory)}
-            &namasekolah=${encodeURIComponent(selectedNamaSekolah)}`
+              formData.namaLengkap
+            )}&projectTitle=${encodeURIComponent(
+              formData.projectTitle
+            )}&category=${encodeURIComponent(
+              formData.category
+            )}&namasekolah=${encodeURIComponent(formData.namasekolah)}`
           );
         }, 1000);
       } else {
@@ -149,14 +151,14 @@ export default function InternationalOnline() {
   return (
     <>
       <section className="registration-section">
-        <div className="container">
-          <div className="content">
-            <div className="sub">REGISTRATION FORM</div>
-            <h1 className="garis-bawah"></h1>
+        <div class="container">
+          <div class="content">
+            <div class="sub">REGISTRATION FORM</div>
+            <h1 class="garis-bawah"></h1>
             <br />
             <br />
             <h4>
-              HELLO WYIIA 2025 PARTICIPANTS, Please consider the following
+              HELLO WYIIA 2026 PARTICIPANTS, Please consider the following
               information before filling out the registration form :
             </h4>
             <br />
@@ -215,30 +217,34 @@ export default function InternationalOnline() {
             <form name="regist-form">
               <h1 className="text-sm md:text-lg lg:text-5xl">BIODATA</h1>
               <h1 className="garis-bawah"></h1>
-              <div className="user-details">
-                <div className="input-box">
-                  <label for="CATEGORY_PARTICIPANT" className="form-label">
+              <div class="user-details">
+                <div class="input-box">
+                  <label for="CATEGORY_PARTICIPANT" class="form-label">
                     Categories Participant
                   </label>
-                  <input
+                  <select
                     type="text"
                     id="CATEGORY_PARTICIPANT"
                     name="CATEGORY_PARTICIPANT"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Choose Categories Participant"
-                    value="International Participant"
-                    readOnly
-                  ></input>
+                    value=""
+                    required
+                  >
+                    <option value="International Participant">
+                      International Participant
+                    </option>
+                  </select>
                 </div>
-                <div className="input-box">
-                  <label for="CATEGORY_COMPETITION" className="form-label">
+                <div class="input-box">
+                  <label for="CATEGORY_COMPETITION" class="form-label">
                     Category Competition
                   </label>
                   <select
                     type="text"
                     id="CATEGORY_COMPETITION"
                     name="CATEGORY_COMPETITION"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Choose Category Competition "
                     required
                     onChange={handleCategoryChange}
@@ -259,9 +265,9 @@ export default function InternationalOnline() {
                 </div>
               </div>
 
-              <div className="user-details">
-                <div className="input-box">
-                  <label for="NAMA_LENGKAP" className="form-label">
+              <div class="user-details">
+                <div class="input-box">
+                  <label for="NAMA_LENGKAP" class="form-label">
                     Name of Leader & Member Team
                   </label>
                   <label>
@@ -271,15 +277,15 @@ export default function InternationalOnline() {
                       the following format:
                     </p>
                     <p>Note: maximum 5 members + 1 team leader</p>
-                    <h6>Kamal Putra</h6>
-                    <h6>Ranu Ramadhan</h6>
-                    <h6>Irsyad Zaidan</h6>
+                    <h6>Kamal Putra Arjuno</h6>
+                    <h6>Ranu Ramadhan Putra</h6>
+                    <h6>Irsyad Zaidan Wibowo</h6>
                   </label>
                   <textarea
                     type="text"
                     id="NAMA_LENGKAP"
                     name="NAMA_LENGKAP"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input Name of Leader & Member Team"
                     required
                     value={selectedMaxNamaLengkap}
@@ -289,8 +295,8 @@ export default function InternationalOnline() {
                     {selectedMaxNamaLengkap.length} / {maxNameChars} character
                   </p>
                 </div>
-                <div className="input-box">
-                  <label for="LEADER_WHATSAPP" className="form-label">
+                <div class="input-box">
+                  <label for="LEADER_WHATSAPP" class="form-label">
                     Leader WhatsApp Number
                     <p>
                       Please write with phone code, example : (phone code) (your
@@ -301,20 +307,20 @@ export default function InternationalOnline() {
                     type="number"
                     id="LEADER_WHATSAPP"
                     name="LEADER_WHATSAPP"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input Leader WhatsApp Number"
                     required
                   />
                 </div>
-                <div className="input-box">
-                  <label for="PHONE_CODE" className="form-label">
+                <div class="input-box">
+                  <label for="PHONE_CODE" class="form-label">
                     Phone Code
                   </label>
                   <select
                     type="text"
                     id="PHONE_CODE"
                     name="PHONE_CODE"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Choose Phone Code "
                     required
                   >
@@ -382,8 +388,8 @@ export default function InternationalOnline() {
                     <option value="Zimbabwe +263">Zimbabwe +263</option>
                   </select>
                 </div>
-                <div className="input-box">
-                  <label for="LEADER_EMAIL" className="form-label">
+                <div class="input-box">
+                  <label for="LEADER_EMAIL" class="form-label">
                     Leader Email Address
                   </label>
                   <label>
@@ -397,7 +403,7 @@ export default function InternationalOnline() {
                     type="email"
                     id="LEADER_EMAIL"
                     name="LEADER_EMAIL"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input Your Leader Email Address"
                     required
                   />
@@ -408,9 +414,9 @@ export default function InternationalOnline() {
               {/* DATA SEKOLAH START */}
               <h1 className="text-sm md:text-lg lg:text-5xl">SCHOOL DATA</h1>
               <h1 className="garis-bawah"></h1>
-              <div className="user-details">
-                <div className="input-box">
-                  <label for="NAMA_SEKOLAH" className="form-label">
+              <div class="user-details">
+                <div class="input-box">
+                  <label for="NAMA_SEKOLAH" class="form-label">
                     Name of School/University
                   </label>
                   <label>
@@ -432,7 +438,7 @@ export default function InternationalOnline() {
                     type="text"
                     id="NAMA_SEKOLAH"
                     name="NAMA_SEKOLAH"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input School Name of Leader & Member Team"
                     required
                     value={selectedNamaSekolah}
@@ -444,33 +450,36 @@ export default function InternationalOnline() {
                 </div>
               </div>
               <div className="user-details">
-                <div className="input-box">
-                  <label for="GRADE" className="form-label">
+                <div class="input-box">
+                  <label for="GRADE" class="form-label">
                     Grade{" "}
                   </label>
                   <select
                     type="text"
                     id="GRADE"
                     name="GRADE"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Choose Grade"
                     required
                   >
-                    <option value="">--Choose Grade--</option>
+                    <option value="">--Choose Your Grade--</option>
                     <option value="Elementary">Elementary</option>
-                    <option value="Secondary">Secondary</option>
+                    <option value="Secondary">
+                      Secondary
+                    </option>
                     <option value="University">University</option>
+                    <option value="Public (Teachers, Lecture, Researchers)">Public (Teachers, Lecture, Researchers)</option>
                   </select>
                 </div>
-                <div className="input-box">
-                  <label for="COUNTRY" className="form-label">
+                <div class="input-box">
+                  <label for="COUNTRY" class="form-label">
                     Country
                   </label>
                   <input
                     type="text"
                     id="COUNTRY"
                     name="COUNTRY"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Your Country "
                     required
                   />
@@ -484,24 +493,21 @@ export default function InternationalOnline() {
               </h1>
               <h1 className="garis-bawah"></h1>
               <div className="user-details">
-                <div className="input-box">
-                  <label for="NAME_SUPERVISOR" className="form-label">
+                <div class="input-box">
+                  <label for="NAME_SUPERVISOR" class="form-label">
                     Name of Teacher/Supervisor
                   </label>
                   <textarea
                     type="text"
                     id="NAME_SUPERVISOR"
                     name="NAME_SUPERVISOR"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input Name of Teacher/Supervisor"
                     required
                   ></textarea>
                 </div>
-                <div className="input-box">
-                  <label
-                    for="WHATSAPP_NUMBER_SUPERVISOR"
-                    className="form-label"
-                  >
+                <div class="input-box">
+                  <label for="WHATSAPP_NUMBER_SUPERVISOR" class="form-label">
                     Teacher/Supervisor WhatsApp Number
                     <p>
                       Please write with phone code, example : (phone code) (your
@@ -512,20 +518,20 @@ export default function InternationalOnline() {
                     type="number"
                     id="WHATSAPP_NUMBER_SUPERVISOR"
                     name="WHATSAPP_NUMBER_SUPERVISOR"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input Teacher/Supervisor WhatsApp Number"
                     required
                   />
                 </div>
-                <div className="input-box">
-                  <label for="EMAIL_TEACHER_SUPERVISOR" className="form-label">
+                <div class="input-box">
+                  <label for="EMAIL_TEACHER_SUPERVISOR" class="form-label">
                     Teacher/Supervisor Email Address
                   </label>
                   <input
                     type="email"
                     id="EMAIL_TEACHER_SUPERVISOR"
                     name="EMAIL_TEACHER_SUPERVISOR"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input Teacher/Supervisor Email Address"
                     required
                   />
@@ -543,19 +549,15 @@ export default function InternationalOnline() {
                 <h1 className="garis-bawah"></h1>
               </div>
               <div className="user-details">
-                <div className="input-box">
-                  <label for="PROJECT_TITLE" className="form-label">
+                <div class="input-box">
+                  <label for="PROJECT_TITLE" class="form-label">
                     Project Title
-                    <p>
-                      Notes: Please fill in the title data CORRECTLY, the data
-                      entered cannot be changed!
-                    </p>
                   </label>
                   <textarea
                     type="text"
                     id="PROJECT_TITLE"
                     name="PROJECT_TITLE"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input Your Project Title"
                     required
                     value={selectedMaxProject}
@@ -576,20 +578,25 @@ export default function InternationalOnline() {
                     required
                   >
                     <option value="">--Choose Categories--</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Mathematics">Mathematics</option>
+                    <option value="Social Science">Social Sciences</option>
+                    <option value="Social Science">Technology</option>
                     <option value="Social Science">Social Science</option>
-                    <option value="Environmental">Environment</option>
-                    <option value="Life Science">Life Science</option>
-                    <option value="Physic">Physic</option>
-                    <option value="Education">Education</option>
+                    <option value="Social Science">Mathematics</option>
+                    <option value="Social Science">Environment</option>
+                    <option value="Education">
+                      Education
+                    </option>
                     <option value="Energy and Engineering">
                       Energy and Engineering
                     </option>
+                    <option value="Engineering">Pyhsic</option>
+                    <option value="Life ">
+                      Life Sciences
+                    </option>
                   </select>
                 </div>
-                <div className="input-box ">
-                  <label for="YES_NO" className="form-label">
+                <div class="input-box ">
+                  <label for="YES_NO" class="form-label">
                     Does the project title have ever participated in an
                     invention and innovation competition before?
                   </label>
@@ -597,7 +604,7 @@ export default function InternationalOnline() {
                     type="text"
                     id="YES_NO"
                     name="YES_NO"
-                    className="form-control"
+                    class="form-control"
                     placeholder="--Choose-- "
                     required
                   >
@@ -606,11 +613,8 @@ export default function InternationalOnline() {
                     <option value="No">No</option>
                   </select>
                 </div>
-                <div className="input-box">
-                  <label
-                    for="JUDUL_PERNAH_BERPATISIPASI"
-                    className="form-label"
-                  >
+                <div class="input-box">
+                  <label for="JUDUL_PERNAH_BERPATISIPASI" class="form-label">
                     If the project title have ever participated in other
                     invention and innovation competition, please write down the
                     name of competition
@@ -619,16 +623,16 @@ export default function InternationalOnline() {
                     type="text"
                     id="JUDUL_PERNAH_BERPATISIPASI"
                     name="JUDUL_PERNAH_BERPATISIPASI"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input Competition Name"
                   ></textarea>
-                  <div className="mt-5" id="form_alerts"></div>
+                  <div class="mt-5" id="form_alerts"></div>
                 </div>
 
                 {/* Kolom Harga */}
                 <div className="input-box invisible">
                   <label htmlFor="CATEGORY_PRICE" className="form-label ">
-                    Registration Price
+                    Harga Pendaftaran
                   </label>
                   <input
                     type="text"
@@ -651,8 +655,8 @@ export default function InternationalOnline() {
                 <h1 className="garis-bawah"></h1>
               </div>
               <div className="user-details">
-                <div className="input-box">
-                  <label for="SOSMED" className="form-label">
+                <div class="input-box">
+                  <label for="SOSMED" class="form-label">
                     If you don&apos;t have whatsapp number, please write down
                     your social media account. (Ex: Instagram/FB/Telegram/Line)
                   </label>
@@ -667,21 +671,21 @@ export default function InternationalOnline() {
                     type="text"
                     id="SOSMED"
                     name="SOSMED"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Input Your Social Media Account "
                     required
                   />
                 </div>
 
-                <div className="input-box">
-                  <label for="INFORMATION_RESOURCES" className="form-label">
-                    WYIIA 2025 Competition Information Resources
+                <div class="input-box">
+                  <label for="INFORMATION_RESOURCES" class="form-label">
+                    WYIIA 2026 Competition Information Resources
                   </label>
                   <select
                     type="text"
                     id="INFORMATION_RESOURCES"
                     name="INFORMATION_RESOURCES"
-                    className="form-control"
+                    class="form-control"
                     placeholder="--Choose Information Resources-- "
                     required
                   >
@@ -690,20 +694,20 @@ export default function InternationalOnline() {
                     </option>
                     <option value="WYIIA Website">WYIIA Website</option>
                     <option value="IYSA Website">IYSA Website</option>
-                    <option value="WYIIA Email">WYIIA Email</option>
                     <option value="IYSA Instagram">IYSA Instagram</option>
                     <option value="WYIIA Instagram">WYIIA Instagram</option>
                     <option value="Supervisor/School">Supervisor/School</option>
                     <option value="IYSA Facebook">IYSA Facebook</option>
                     <option value="IYSA Linkedin">IYSA Linkedin</option>
                     <option value="IYSA Email">IYSA Email</option>
+                    <option value="WYIIA Email">WYIIA Email</option>
                     <option value="Previous Event">Previous Event</option>
                     <option value="Others">Others</option>
                   </select>
                 </div>
               </div>
-              <div className="button">
-                <input type="submit" value="CLOSE" />
+              <div class="button">
+                <input type="submit" value="SUBMIT FORM" />
               </div>
             </form>
 
