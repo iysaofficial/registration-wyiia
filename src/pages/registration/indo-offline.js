@@ -45,7 +45,7 @@ function IndonesiaOffline() {
 
     // Logika untuk menentukan harga berdasarkan kategori yang dipilih
     switch (value) {
-      case "International Science Project Competition - Offline Competition":
+      case "World Youth Invention and Innovation Award - Offline Competition": // <-- diperbaiki, disamakan dengan value di <option>
         setCategoryPrice("RP 3.150.000");
         break;
       default:
