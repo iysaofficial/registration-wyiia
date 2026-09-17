@@ -73,16 +73,19 @@ export default function InternationalOnline() {
 
   useEffect(() => {
     const form = document.forms["regist-form"];
+    let interval = null;
 
     if (form) {
       const handleSubmit = async (e) => {
         e.preventDefault();
+        if (isLoading) return;
+
         setShowModal(true);
         setCanClick(false);
         setCountdown(5); // Set ulang countdown saat modal muncul
 
         let count = 5;
-        const interval = setInterval(() => {
+        interval = setInterval(() => {
           count -= 1;
           setCountdown(count);
 
@@ -95,18 +98,27 @@ export default function InternationalOnline() {
 
       form.addEventListener("submit", handleSubmit);
       return () => {
+        if (interval) clearInterval(interval);
         form.removeEventListener("submit", handleSubmit);
       };
     }
-  }, []);
+  }, [isLoading]);
 
   const handleConfirmSubmit = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
+    setStatusMessage(
+      "Submitting data... Please wait and do not refresh or close this page."
+    );
     setShowModal(false); // Close the modal
+
     const form = document.forms["regist-form"];
 
-    if (!form) return;
+    if (!form) {
+      setIsLoading(false);
+      return;
+    }
 
-    setIsLoading(true);
     try {
       const response = await fetch(scriptURL, {
         method: "POST",
@@ -114,7 +126,7 @@ export default function InternationalOnline() {
       });
 
       if (response.ok) {
-        setStatusMessage("Data sent successfully!");
+        setStatusMessage("Data sent successfully! Redirecting...");
 
         // Ambil data sebelum reset
         const formData = {
@@ -139,11 +151,15 @@ export default function InternationalOnline() {
           );
         }, 1000);
       } else {
-        setStatusMessage("An error occurred while sending data.");
+        setStatusMessage(
+          "An error occurred while sending data. Please try again."
+        );
+        setIsLoading(false);
       }
     } catch (error) {
-      setStatusMessage("An error occurred while sending data.");
-    } finally {
+      setStatusMessage(
+        "An error occurred while sending data. Please try again."
+      );
       setIsLoading(false);
     }
   };
@@ -198,7 +214,7 @@ export default function InternationalOnline() {
                   </p>
 
                   <div className="modal-buttons-submit">
-                    <button onClick={() => setShowModal(false)}>Back</button>
+                    <button onClick={() => setShowModal(false)} disabled={isLoading}>Back</button>
                     <button
                       onClick={handleConfirmSubmit}
                       disabled={!canClick || isLoading}
@@ -222,19 +238,15 @@ export default function InternationalOnline() {
                   <label for="CATEGORY_PARTICIPANT" class="form-label">
                     Categories Participant
                   </label>
-                  <select
+                  <input
                     type="text"
                     id="CATEGORY_PARTICIPANT"
                     name="CATEGORY_PARTICIPANT"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Choose Categories Participant"
-                    value=""
-                    required
-                  >
-                    <option value="International Participant">
-                      International Participant
-                    </option>
-                  </select>
+                    value="INTERNATIONAL PARTICIPANTS"
+                    readOnly
+                  />
                 </div>
                 <div class="input-box">
                   <label for="CATEGORY_COMPETITION" class="form-label">
@@ -577,22 +589,17 @@ export default function InternationalOnline() {
                     className="form-control"
                     required
                   >
-                    <option value="">--Choose Categories--</option>
-                    <option value="Social Science">Social Sciences</option>
-                    <option value="Social Science">Technology</option>
+                    <option value="">--Choose Category--</option>
                     <option value="Social Science">Social Science</option>
-                    <option value="Social Science">Mathematics</option>
-                    <option value="Social Science">Environment</option>
-                    <option value="Education">
-                      Education
-                    </option>
+                    <option value="Technology">Technology</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Environment">Environment</option>
+                    <option value="Education">Education</option>
                     <option value="Energy and Engineering">
                       Energy and Engineering
                     </option>
-                    <option value="Engineering">Pyhsic</option>
-                    <option value="Life ">
-                      Life Sciences
-                    </option>
+                    <option value="Physics">Physics</option>
+                    <option value="Life Sciences">Life Sciences</option>
                   </select>
                 </div>
                 <div class="input-box ">
@@ -706,8 +713,8 @@ export default function InternationalOnline() {
                   </select>
                 </div>
               </div>
-              <div class="button">
-                <input type="submit" value="SUBMIT FORM" />
+              <div className="button">
+                <input type="submit" value="SUBMIT FORM" disabled={isLoading} />
               </div>
             </form>
 
@@ -716,9 +723,10 @@ export default function InternationalOnline() {
               <div className="overlay-loader">
                 <div className="loader"></div>
                 <div>
-                  {statusMessage && (
-                    <p className="status-message">{statusMessage}</p>
-                  )}
+                  <p className="status-message">
+                    {statusMessage ||
+                      "Submitting data... Please wait and do not refresh or close this page."}
+                  </p>
                 </div>
               </div>
             )}

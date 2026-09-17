@@ -67,16 +67,19 @@ function IndonesiaOffline() {
 
   useEffect(() => {
     const form = document.forms["regist-form"];
+    let interval = null;
 
     if (form) {
       const handleSubmit = async (e) => {
         e.preventDefault();
+        if (isLoading) return;
+
         setShowModal(true);
         setCanClick(false);
         setCountdown(5); // Set ulang countdown saat modal muncul
 
         let count = 5;
-        const interval = setInterval(() => {
+        interval = setInterval(() => {
           count -= 1;
           setCountdown(count);
 
@@ -89,18 +92,27 @@ function IndonesiaOffline() {
 
       form.addEventListener("submit", handleSubmit);
       return () => {
+        if (interval) clearInterval(interval);
         form.removeEventListener("submit", handleSubmit);
       };
     }
-  }, []);
+  }, [isLoading]);
 
   const handleConfirmSubmit = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
+    setStatusMessage(
+      "Sedang mengirim data... Mohon tunggu dan jangan memuat ulang halaman ini."
+    );
     setShowModal(false); // Tutup modal
+
     const form = document.forms["regist-form"];
 
-    if (!form) return;
+    if (!form) {
+      setIsLoading(false);
+      return;
+    }
 
-    setIsLoading(true);
     try {
       const response = await fetch(scriptURL, {
         method: "POST",
@@ -108,7 +120,9 @@ function IndonesiaOffline() {
       });
 
       if (response.ok) {
-        setStatusMessage("Data sent successfully!");
+        setStatusMessage(
+          "Data berhasil dikirim! Mengalihkan ke halaman terima kasih..."
+        );
 
         // Ambil data sebelum reset
         const formData = {
@@ -132,11 +146,15 @@ function IndonesiaOffline() {
           );
         }, 1000);
       } else {
-        setStatusMessage("An error occurred while sending data.");
+        setStatusMessage(
+          "Terjadi kesalahan saat mengirim data. Silakan coba lagi."
+        );
+        setIsLoading(false);
       }
     } catch (error) {
-      setStatusMessage("An error occurred while sending data.");
-    } finally {
+      setStatusMessage(
+        "Terjadi kesalahan saat mengirim data. Silakan coba lagi."
+      );
       setIsLoading(false);
     }
   };
@@ -190,7 +208,7 @@ function IndonesiaOffline() {
                     <b>DO NOT RE-REGISTER WITH THE SAME DATA MULTIPLE TIMES!</b>
                   </p>
                   <div className="modal-buttons-submit">
-                    <button onClick={() => setShowModal(false)}>Back</button>
+                    <button onClick={() => setShowModal(false)} disabled={isLoading}>Back</button>
                     <button
                       onClick={handleConfirmSubmit}
                       disabled={!canClick || isLoading}
@@ -548,21 +566,16 @@ function IndonesiaOffline() {
                     required
                   >
                     <option value="">--Choose Category--</option>
-                    <option value="Social Science">Social Sciences</option>
-                    <option value="Social Science">Technology</option>
                     <option value="Social Science">Social Science</option>
-                    <option value="Social Science">Mathematics</option>
-                    <option value="Social Science">Environment</option>
-                    <option value="Education">
-                      Education
-                    </option>
+                    <option value="Technology">Technology</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Environment">Environment</option>
+                    <option value="Education">Education</option>
                     <option value="Energy and Engineering">
                       Energy and Engineering
                     </option>
-                    <option value="Engineering">Pyhsic</option>
-                    <option value="Life ">
-                      Life Sciences
-                    </option>
+                    <option value="Physics">Physics</option>
+                    <option value="Life Sciences">Life Sciences</option>
                   </select>
                 </div>
 
@@ -696,7 +709,7 @@ function IndonesiaOffline() {
               {/* GENERAL INFORMATION END */}
 
               <div className="button">
-                <input type="submit" value="SUBMIT FORM" />
+                <input type="submit" value="SUBMIT FORM" disabled={isLoading} />
               </div>
             </form>
             {/* Loader dan Status Message */}
@@ -704,9 +717,10 @@ function IndonesiaOffline() {
               <div className="overlay-loader">
                 <div className="loader"></div>
                 <div>
-                  {statusMessage && (
-                    <p className="status-message">{statusMessage}</p>
-                  )}
+                  <p className="status-message">
+                    {statusMessage ||
+                      "Sedang mengirim data... Mohon tunggu dan jangan memuat ulang halaman ini."}
+                  </p>
                 </div>
               </div>
             )}
