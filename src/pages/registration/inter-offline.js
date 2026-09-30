@@ -690,7 +690,7 @@ export default function InternationalOffline() {
                 </div>
               </div>
               <div className="button">
-                <input type="submit" value="SUBMIT FORM" disabled={isLoading} />
+                {/* <input type="submit" value="SUBMIT FORM" disabled={isLoading} /> */}
               </div>
             </form>
 

@@ -703,7 +703,7 @@ function IndonesiaOnline() {
               {/* GENERAL INFORMATION END */}
 
               <div className="button">
-                <input type="submit" value="SUBMIT FORM" disabled={isLoading} />
+                {/* <input type="submit" value="SUBMIT FORM" disabled={isLoading} /> */}
               </div>
             </form>
 

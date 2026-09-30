@@ -23,7 +23,7 @@ export default function Home() {
             </div>
           </div>
           <div className="link-web mx-auto text-center">
-            <Link href="/registration/homeindo" legacyBehavior>
+            {/* <Link href="/registration/homeindo" legacyBehavior>
               <a
                 className="btn btn-action text-center me-lg-5 m-2"
               >
@@ -36,7 +36,7 @@ export default function Home() {
                 International Citizen{" "}
                 <i className="fa-solid fa-earth-americas"></i>
               </a>
-            </Link>
+            </Link> */}
             <br />
             <br />
             <a href="https://wyiia.or.id/">
